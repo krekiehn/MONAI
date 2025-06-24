@@ -2005,7 +2005,7 @@ class DiffusionModelEncoder(nn.Module):
 
             self.down_blocks.append(down_block)
 
-        self.out = nn.Sequential(nn.Linear(4096, 512), nn.ReLU(), nn.Dropout(0.1), nn.Linear(512, self.out_channels))
+        self.out = nn.Sequential(nn.LazyLinear(512), nn.ReLU(), nn.Dropout(0.1), nn.Linear(512, self.out_channels))
 
     def forward(
         self,
